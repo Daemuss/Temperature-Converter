@@ -17,7 +17,23 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
+    public static void test()
+    {
+        Converter converter = new Converter();
+
+        converter.celciusToFahrenheit(10);
+        float result = converter.getFahrenheit();
+
+        System.out.println(result);
+    }
+
+    public static void main(String[] args)
+    {
+        if(args.length > 0 && args[0] == "test")
+        {
+            test();
+        }
+
         launch(args);
     }
 }
