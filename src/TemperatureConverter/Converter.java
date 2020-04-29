@@ -3,31 +3,35 @@ package TemperatureConverter;
 public class Converter
 {
     private Temperature temperature;
-    private float getCelsiusTemp;
 
-    // Constructor and setter for the celsius temperature
-    public Converter(float celsius)
+    // Constructor
+    public Converter(float celsius, float fahrenheit, float kelvin)
     {
-        this.temperature = new Temperature();
-        temperature.celsius = celsius;
-        this.getCelsiusTemp = temperature.getCelsius();
+        this.temperature = new Temperature(celsius, fahrenheit, kelvin);
+    }
+
+    public float getTemperatureCelsius()
+    {
+        return temperature.getTemperature().celsius;
     }
 
     // Convert celsius to fahrenheit
-    public float celsiusToFahrenheit()
+    public Temperature celsiusToFahrenheit()
     {
         float fahrenheit;
-        fahrenheit = (float) (this.getCelsiusTemp * 1.8 + 32);
+        fahrenheit = (float) (this.getTemperatureCelsius() * 1.8 + 32);
+        Temperature temp = new Temperature(this.getTemperatureCelsius(), fahrenheit, 0);
 
-        return fahrenheit;
+        return temp;
     }
 
     // Convert celsius to kelvin
-    public float celsiusToKelvin()
+    public Temperature celsiusToKelvin()
     {
         float kelvin;
-        kelvin = (float) (this.getCelsiusTemp + 273.15);
+        kelvin = (float) (this.getTemperatureCelsius() + 273.15);
+        Temperature temp = new Temperature(this.getTemperatureCelsius(), celsiusToFahrenheit().fahrenheit, kelvin);
 
-        return kelvin;
+        return temp;
     }
 }

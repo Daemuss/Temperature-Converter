@@ -2,23 +2,19 @@ package TemperatureConverter;
 
 public class Temperature
 {
-    protected float celsius, fahrenheit, kelvin;
+    protected final float celsius;
+    protected final float fahrenheit;
+    protected final float kelvin;
 
-    // Returns the celsius temperature
-    public float getCelsius()
+    public Temperature(float celsius, float fahrenheit, float kelvin)
     {
-        return this.celsius;
+        this.celsius = celsius;
+        this.fahrenheit = fahrenheit;
+        this.kelvin = kelvin;
     }
 
-    // Returns the fahrenheit temperature
-    public float getFahrenheit()
+    public Temperature getTemperature()
     {
-        return this.fahrenheit;
-    }
-
-    // Returns the kelvin temperature
-    public float getKelvin()
-    {
-        return this.kelvin;
+        return new Temperature(celsius, fahrenheit, kelvin);
     }
 }

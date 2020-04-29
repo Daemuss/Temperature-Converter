@@ -19,13 +19,12 @@ public class Main extends Application {
 
     public static void test()
     {
-        Converter converter = new Converter(10);
+        Converter converter = new Converter(10, 50, (float) 273.15);
 
-        converter.setFahrenheit(32);
-        float fahrenheit = converter.celsiusToFahrenheit();
-        float kelvin = converter.celsiusToKelvin();
+        float fahrenheit = converter.celsiusToFahrenheit().fahrenheit;
+        float kelvin = converter.celsiusToKelvin().kelvin;
 
-        System.out.println(converter.setFahrenheit(50));
+        System.out.println(kelvin);
     }
 
     public static void main(String[] args)
