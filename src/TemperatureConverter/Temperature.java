@@ -13,7 +13,7 @@ public class Temperature
         this.kelvin = kelvin;
     }
 
-    public Temperature getTemperature()
+    public Temperature copy()
     {
         return new Temperature(celsius, fahrenheit, kelvin);
     }

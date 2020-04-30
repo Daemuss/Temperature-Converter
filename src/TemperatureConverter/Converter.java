@@ -2,36 +2,29 @@ package TemperatureConverter;
 
 public class Converter
 {
-    private Temperature temperature;
-
-    // Constructor
-    public Converter(float celsius, float fahrenheit, float kelvin)
+    // Calculation for celsius to fahrenheit
+    private float celsiusToFahrenheit(float celsius)
     {
-        this.temperature = new Temperature(celsius, fahrenheit, kelvin);
+        float fahrenheit;
+        fahrenheit = (float) (celsius * 1.8 + 32);
+
+        return fahrenheit;
     }
 
-    public float getTemperatureCelsius()
+    // Calculation for celsius to kelvin
+    private float celsiusToKelvin(float celsius)
     {
-        return temperature.getTemperature().celsius;
+        float kelvin;
+        kelvin = (float) (celsius + 273.15);
+
+        return kelvin;
     }
 
     // Convert celsius to fahrenheit
-    public Temperature celsiusToFahrenheit()
+    public Temperature convertFahrenheit(float celsius)
     {
-        float fahrenheit;
-        fahrenheit = (float) (this.getTemperatureCelsius() * 1.8 + 32);
-        Temperature temp = new Temperature(this.getTemperatureCelsius(), fahrenheit, 0);
+        Temperature temperature = new Temperature(0, this.celsiusToFahrenheit(celsius), 0);
 
-        return temp;
-    }
-
-    // Convert celsius to kelvin
-    public Temperature celsiusToKelvin()
-    {
-        float kelvin;
-        kelvin = (float) (this.getTemperatureCelsius() + 273.15);
-        Temperature temp = new Temperature(this.getTemperatureCelsius(), celsiusToFahrenheit().fahrenheit, kelvin);
-
-        return temp;
+        return temperature;
     }
 }
