@@ -11,7 +11,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-        Parent root = new GridPane();
+        GridPane root = new GridPane();
+        new Pane(root);
+
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
@@ -21,9 +23,9 @@ public class Main extends Application {
     {
         Converter converter = new Converter();
 
-        float fahrenheit = converter.convertFahrenheit(10).fahrenheit;
+        Temperature temp = converter.convertCelsius(10);
 
-        System.out.println(fahrenheit);
+        System.out.println(temp.kelvin);
     }
 
     public static void main(String[] args)

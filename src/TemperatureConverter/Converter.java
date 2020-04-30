@@ -21,9 +21,9 @@ public class Converter
     }
 
     // Convert celsius to fahrenheit
-    public Temperature convertFahrenheit(float celsius)
+    public Temperature convertCelsius(float celsius)
     {
-        Temperature temperature = new Temperature(0, this.celsiusToFahrenheit(celsius), 0);
+        Temperature temperature = new Temperature(celsius, this.celsiusToFahrenheit(celsius), this.celsiusToKelvin(celsius));
 
         return temperature;
     }

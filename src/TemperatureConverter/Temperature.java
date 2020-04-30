@@ -12,9 +12,4 @@ public class Temperature
         this.fahrenheit = fahrenheit;
         this.kelvin = kelvin;
     }
-
-    public Temperature copy()
-    {
-        return new Temperature(celsius, fahrenheit, kelvin);
-    }
 }
