@@ -5,6 +5,9 @@ import javafx.scene.layout.GridPane;
 
 import javafx.scene.control.*;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Pane
 {
     private Label labelHeader, labelCelsius, labelFahrenheit, labelKelvin;
@@ -68,8 +71,13 @@ public class Pane
                 float celsiusValue = Float.parseFloat(this.textfieldCelcius.getText());
                 Converter converter = new Converter();
                 Temperature temp = converter.convertCelsius(celsiusValue);
-                textfieldFahrenheit.setText(String.format("%.2f", temp.fahrenheit));
-                textfieldKelvin.setText(String.format("%.2f", temp.kelvin));
+                NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+                numberFormat.setMaximumFractionDigits(2);
+                String fahrenheit = numberFormat.format(temp.fahrenheit);
+                String kelvin = numberFormat.format(temp.kelvin);
+
+                textfieldFahrenheit.setText(fahrenheit);
+                textfieldKelvin.setText(kelvin);
             }
             catch(NumberFormatException e)
             {
