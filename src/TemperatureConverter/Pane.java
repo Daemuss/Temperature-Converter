@@ -62,17 +62,19 @@ public class Pane
     private void convertCelsiusEvent()
     {
         buttonSubmit.setOnAction(event -> {
+            textfieldCelcius.setStyle("-fx-background-color: white;-fx-text-inner-color: black;");
             try
             {
                 float celsiusValue = Float.parseFloat(this.textfieldCelcius.getText());
                 Converter converter = new Converter();
                 Temperature temp = converter.convertCelsius(celsiusValue);
                 textfieldFahrenheit.setText(String.format("%.2f", temp.fahrenheit));
-                textfieldKelvin.setText(String.valueOf(temp.kelvin));
+                textfieldKelvin.setText(String.format("%.2f", temp.kelvin));
             }
             catch(NumberFormatException e)
             {
                 System.out.println(e);
+                textfieldCelcius.setStyle("-fx-background-color: red;-fx-text-inner-color: white;");
             }
         });
     }

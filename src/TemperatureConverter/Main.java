@@ -13,7 +13,7 @@ public class Main extends Application {
         GridPane root = new GridPane();
         new Pane(root);
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Temperature converter");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
