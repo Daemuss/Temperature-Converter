@@ -7,9 +7,9 @@ import javafx.scene.control.*;
 
 public class Pane
 {
-    private Label lblHeader, lblCelsius, lblFahrenheit, lblKelvin;
-    private TextField txtCelcius, txtFahrenheit, txtKelvin;
-    private Button btnSubmit, btnCancel;
+    private Label labelHeader, labelCelsius, labelFahrenheit, labelKelvin;
+    private TextField textfieldCelcius, textfieldFahrenheit, textfieldKelvin;
+    private Button buttonSubmit, buttonCancel;
 
     public Pane(GridPane p)
     {
@@ -29,54 +29,61 @@ public class Pane
     // Creates new FX components
     private void createFXComponents()
     {
-        lblHeader = new Label("Temperature Converter");
-        lblCelsius = new Label("Celsius: ");
-        lblFahrenheit = new Label("Fahrenheit: ");
-        lblKelvin = new Label("Kelvin: ");
+        labelHeader = new Label("Temperature Converter");
+        labelCelsius = new Label("Celsius: ");
+        labelFahrenheit = new Label("Fahrenheit: ");
+        labelKelvin = new Label("Kelvin: ");
 
-        txtCelcius = new TextField();
-        txtFahrenheit = new TextField();
-        txtKelvin = new TextField();
+        textfieldCelcius = new TextField();
+        textfieldFahrenheit = new TextField();
+        textfieldKelvin = new TextField();
 
-        btnSubmit = new Button("OK");
-        btnCancel = new Button("Cancel");
+        buttonSubmit = new Button("OK");
+        buttonCancel = new Button("Cancel");
     }
 
     // Add the FX components to the grid pane
     private void addToGridPane(GridPane p)
     {
-        p.add(lblHeader, 0, 0);
-        p.add(lblCelsius, 0, 1);
-        p.add(lblFahrenheit, 0, 2);
-        p.add(lblKelvin, 0, 3);
+        p.add(labelHeader, 0, 0);
+        p.add(labelCelsius, 0, 1);
+        p.add(labelFahrenheit, 0, 2);
+        p.add(labelKelvin, 0, 3);
 
-        p.add(txtCelcius, 1, 1);
-        p.add(txtFahrenheit, 1, 2);
-        p.add(txtKelvin, 1, 3);
+        p.add(textfieldCelcius, 1, 1);
+        p.add(textfieldFahrenheit, 1, 2);
+        p.add(textfieldKelvin, 1, 3);
 
-        p.add(btnSubmit, 0, 4);
-        p.add(btnCancel, 1, 4);
+        p.add(buttonSubmit, 0, 4);
+        p.add(buttonCancel, 1, 4);
     }
 
     // OK button to convert celsius to other temperatures
     private void convertCelsiusEvent()
     {
-        btnSubmit.setOnAction(event -> {
-            float celsiusValue = Float.parseFloat(txtCelcius.getText());
-            Converter converter = new Converter();
-            Temperature temp = converter.convertCelsius(celsiusValue);
-            txtFahrenheit.setText(String.valueOf(temp.fahrenheit));
-            txtKelvin.setText(String.valueOf(temp.kelvin));
+        buttonSubmit.setOnAction(event -> {
+            try
+            {
+                float celsiusValue = Float.parseFloat(this.textfieldCelcius.getText());
+                Converter converter = new Converter();
+                Temperature temp = converter.convertCelsius(celsiusValue);
+                textfieldFahrenheit.setText(String.format("%.2f", temp.fahrenheit));
+                textfieldKelvin.setText(String.valueOf(temp.kelvin));
+            }
+            catch(NumberFormatException e)
+            {
+                System.out.println(e);
+            }
         });
     }
 
     // Cancel button to empty the fields
     private void cancelButtonEvent()
     {
-        btnCancel.setOnAction(event -> {
-            txtCelcius.setText("");
-            txtFahrenheit.setText("");
-            txtKelvin.setText("");
+        buttonCancel.setOnAction(event -> {
+            textfieldCelcius.setText("");
+            textfieldFahrenheit.setText("");
+            textfieldKelvin.setText("");
         });
     }
 }

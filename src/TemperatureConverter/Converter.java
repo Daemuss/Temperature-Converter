@@ -6,7 +6,7 @@ public class Converter
     private float celsiusToFahrenheit(float celsius)
     {
         float fahrenheit;
-        fahrenheit = (float) (celsius * 1.8 + 32);
+        fahrenheit = celsius * 1.8f + 32;
 
         return fahrenheit;
     }
@@ -15,7 +15,7 @@ public class Converter
     private float celsiusToKelvin(float celsius)
     {
         float kelvin;
-        kelvin = (float) (celsius + 273.15);
+        kelvin = celsius + 273.15f;
 
         return kelvin;
     }
